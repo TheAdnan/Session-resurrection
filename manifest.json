@@ -1,0 +1,16 @@
+{
+    "manifest_version": 2,
+    "name": "session-resurrection",
+    "version": "1",
+    "description": "Save your browser sessions and reload them any time",
+    "icons": {
+        "48": "icons/sess-res-48.png"
+    },
+    "permissions": ["activeTab", "tabs", "storage"],
+    "browser_action": {
+        "default_icon": "icons/sess-res-48.png",
+        "default_title": "Session Resurrection",
+        "default_popup": "sessions-pop-up/index.html"
+    },
+    "web_accessible_resources": ["saved-sessions/*.json"]
+}
