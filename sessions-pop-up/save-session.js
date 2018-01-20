@@ -28,7 +28,7 @@ function saveToStorage(element, name){
  	Object.keys(data).forEach(function(key){
  		data[key].forEach(function(element){
  			browser.tabs.create({
-    			url: element
+    			"url": "/" + element
  			 });	
  		});
  	});

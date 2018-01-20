@@ -12,5 +12,7 @@
         "default_title": "Session Resurrection",
         "default_popup": "sessions-pop-up/index.html"
     },
-    "web_accessible_resources": ["saved-sessions/*.json"]
+    "background": {
+        "scripts": ["sessions-pop-up/save-session.js"]
+    }
 }
