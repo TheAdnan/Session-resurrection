@@ -26,11 +26,10 @@ function saveToStorage(element, name){
 
  function restoreSession(data){
  	Object.keys(data).forEach(function(key){
- 		data[key].forEach(function(element){
- 			browser.tabs.create({
-    			"url": "/" + element
- 			 });	
- 		});
+//		browser.runtime.onMessage.addListener(
+//		  function(request, sender, sendResponse) {
+		      browser.runtime.sendMessage({"message": "restore_session", "urls": data[key]});
+//		    });	
  	});
  }
 
