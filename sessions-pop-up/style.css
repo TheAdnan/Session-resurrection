@@ -32,6 +32,7 @@ form {
 	border-radius: 5px;
 	margin-top:2px;
 	padding: 5px;
+     cursor: pointer;
 }
 
 #lists {
@@ -44,4 +45,8 @@ form {
 	font-size: 20px;
 	margin: 10px;
 	padding: 10px;
+}
+
+.item {
+    cursor: pointer;
 }

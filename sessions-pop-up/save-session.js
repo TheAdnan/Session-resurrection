@@ -1,42 +1,58 @@
-var tabsLogged = [];
-var jsonSession = "";
+var sessionTabs = [];
 
-function logTabs(tabs) {
-    var jsonSession = "{";
+function saveSession(tabs) {
     for (let tab of tabs) {
-        jsonSession += ("'" + tab.url + "',");
-        tabsLogged.push(tab.url);
+        sessionTabs.push('"' + tab.url + '"');
     }
-    jsonSession += "}";
-    saveToJSON(jsonSession, 'session-' + Date.now() + '.json');
+    saveToStorage(sessionTabs, $("input[name=checkListItem]").val());
 }
 
 function onError(error) {
     console.log(`Error: ${error}`);
 }
 
-function saveToJSON(text, name) {
-    var a = document.createElement("a");
-    var file = new Blob([text], {type: 'text/plain'});
-    a.href = URL.createObjectURL(file);
-    a.download = "../saved-sessions/" + name;
-	browser.downloads.download({
-      url : a.href,
-      saveAs : true
+function onGot(items) {
+    Object.keys(items).forEach(function(key) {
+      key_id = key.replace(/\s+/g, '-').toLowerCase();
+	  $('.list').append('<div class="item" id="' + key_id + '">' + key + "</div>");
+	  $('#' + key_id).data(key, items[key]);
 	});
 }
 
+function saveToStorage(element, name){
+    let setting = browser.storage.local.set({[name]: element});
+    setting.then(null, onError);
+}
+
+ function restoreSession(data){
+ 	Object.keys(data).forEach(function(key){
+ 		data[key].forEach(function(element){
+ 			browser.tabs.create({
+    			url: element
+ 			 });	
+ 		});
+ 	});
+ }
+
+function getSessions(){
+	let gettingItem = browser.storage.local.get();
+	gettingItem.then(onGot, onError);
+}
+
 $(document).ready(function() {
+    getSessions();
     $("#button").click(function() { 
         var toAdd = $("input[name=checkListItem]").val();
-        $('.list').append('<div class="item">'+toAdd+"</div>");
+        $('.list').append('<div class="item">' + toAdd + "</div>");
+        var querying = browser.tabs.query({
+            currentWindow: true
+        });
+        querying.then(saveSession, onError);
     });
     $(document).on('click', '.item', function() {
-        $(this).toggleClass("scratch");
+        $(".item").click(function(){
+        	restoreSession($(this).data());
+        });
     });
 });
     
-var querying = browser.tabs.query({
-    currentWindow: true
-});
-querying.then(logTabs, onError);
