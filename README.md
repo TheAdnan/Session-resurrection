@@ -1,6 +1,6 @@
 <p align="center">
 <a href="#">
-    <img src="https://img.shields.io/badge/made%20while-rewatching-Frisky-Dingo-9C599C.svg" alt="Made while rewatching Frisky Dingo">
+    <img src="https://img.shields.io/badge/Made-while%20rewatching%20Frisky%20Dingo-9C599C.svg" alt="Made while rewatching Frisky Dingo">
   </a>
 </p>
 
