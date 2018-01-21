@@ -9,7 +9,7 @@
 Simple WebExtension to save and restore your browsing sessions.
 
 ### Installation
-The Add-on is submitted to AMO for review, but you can test it already in *about:debugging* in your Firefox browser.
+The Add-on has been approved and can be downloaded here: [https://addons.mozilla.org/en-US/firefox/addon/session-resurrection](https://addons.mozilla.org/en-US/firefox/addon/session-resurrection)
 
 #### Contributing
 Feel free to chime in and contribute, either with code or by making this README actually useful and readable.
