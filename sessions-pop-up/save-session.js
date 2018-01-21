@@ -2,19 +2,19 @@ var sessionTabs = [];
 
 function saveSession(tabs) {
     for (let tab of tabs) {
-        sessionTabs.push('"' + tab.url + '"');
+        sessionTabs.push(tab.url.toString());
     }
     saveToStorage(sessionTabs, $("input[name=checkListItem]").val());
 }
 
 function onError(error) {
-    console.log(`Error: ${error}`);
+    return;
 }
 
 function onGot(items) {
     Object.keys(items).forEach(function(key) {
       key_id = key.replace(/\s+/g, '-').toLowerCase();
-	  $('.list').append('<div class="item" id="' + key_id + '">' + key + "</div>");
+	  $('.list').append('<div class="item" id="' + key_id + '"><span class="icon-arrow-right-circle"></span> ' + key + "</div>");
 	  $('#' + key_id).data(key, items[key]);
 	});
 }
@@ -24,12 +24,14 @@ function saveToStorage(element, name){
     setting.then(null, onError);
 }
 
+function emptyStorage(){
+    let emptying = browser.storage.local.clear();
+    emptying.then(null, onError);
+}
+
  function restoreSession(data){
  	Object.keys(data).forEach(function(key){
-//		browser.runtime.onMessage.addListener(
-//		  function(request, sender, sendResponse) {
-		      browser.runtime.sendMessage({"message": "restore_session", "urls": data[key]});
-//		    });	
+		browser.runtime.sendMessage({"message": "restore_session", "urls": data[key]});
  	});
  }
 
@@ -42,11 +44,21 @@ $(document).ready(function() {
     getSessions();
     $("#button").click(function() { 
         var toAdd = $("input[name=checkListItem]").val();
-        $('.list').append('<div class="item">' + toAdd + "</div>");
-        var querying = browser.tabs.query({
-            currentWindow: true
-        });
-        querying.then(saveSession, onError);
+        if(toAdd.length < 2){
+            return;
+        }
+        else{
+            $('.list').append('<div class="item"><span class="icon-arrow-right-circle"></span> ' + toAdd + '</div>');
+            var querying = browser.tabs.query({
+                currentWindow: true
+            });
+            querying.then(saveSession, onError);
+        }
+    });
+
+    $("#remove-sessions").click(function() { 
+        emptyStorage();
+        $('.list').empty();
     });
     $(document).on('click', '.item', function() {
         $(".item").click(function(){

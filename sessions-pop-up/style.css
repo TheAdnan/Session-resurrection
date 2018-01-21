@@ -1,11 +1,17 @@
- @import url('https://fonts.googleapis.com/css?family=Kavivanar');
+ @import url('https://fonts.googleapis.com/css?family=Meera+Inimai');
 
 h2 {
-    font-family: 'Kavivanar', cursive;
-    font-size: 30px;
+    font-family: 'Meera Inimai', sans-serif;
+    font-size: 32px;
 }
-#box {
-    background-color: #F4F4F4;
+html{
+    background-color: #E9FFB6;
+}
+.follow{
+    font-family: 'Meera Inimai', sans-serif;
+    font-size: 15px;
+}
+body {
     text-align: center;
     padding: 20px 20px;
     margin: 100px auto;  
@@ -16,17 +22,12 @@ h2 {
 form {
     display: inline-block;
 }
-.scratch{
-    text-decoration:line-through;
-    font-weight: bold;
-    color: #ACACAC;
-}
 #button{
     display: inline-block;
     height:20px;
 	width:70px;
 	background-color: #9C599C;
-	font-family: 'Kavivanar', cursive;
+	font-family: 'Meera Inimai', sans-serif;
 	font-weight: bold;
 	color:#ffffff;
 	border-radius: 5px;
@@ -35,11 +36,25 @@ form {
      cursor: pointer;
 }
 
+#remove-sessions{
+    display: inline-block;
+    height:30px;
+    width:90px;
+    background-color: #00A3C1;
+    font-family: 'Meera Inimai', sans-serif;
+    font-weight: bold;
+    color:#ffffff;
+    border-radius: 5px;
+    margin-top:2px;
+    padding: 5px;
+     cursor: pointer;
+}
+
 #lists {
     padding: 5px;
 }
 .list {
-	font-family: 'Kavivanar';
+	font-family: 'Meera Inimai', sans-serif;
 	color: black;
 	font-weight: bold;
 	font-size: 20px;
