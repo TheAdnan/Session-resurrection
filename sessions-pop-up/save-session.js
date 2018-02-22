@@ -40,6 +40,7 @@ function getSessions(){
 	gettingItem.then(onGot, onError);
 }
 
+
 $(document).ready(function() {
     getSessions();
     $("#button").click(function() { 
@@ -54,6 +55,22 @@ $(document).ready(function() {
             });
             querying.then(saveSession, onError);
         }
+    });
+
+    $("#lists").keypress(function(e){
+        if (e.which == 13) {
+                var toAdd = $("input[name=checkListItem]").val();
+                if(toAdd.length < 2){
+                    return;
+                }
+                else{
+                    $('.list').append('<div class="item"><span class="icon-arrow-right-circle"></span> ' + toAdd + '</div>');
+                    var querying = browser.tabs.query({
+                        currentWindow: true
+                    });
+                    querying.then(saveSession, onError);
+                }
+          }
     });
 
     $("#remove-sessions").click(function() { 

@@ -6,21 +6,23 @@
 	<script type="text/javascript" src="jquery-3.2.1.min.js"></script>
 	<script type="text/javascript" src="save-session.js"></script>
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/simple-line-icons/2.4.1/css/simple-line-icons.css">
+	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.6.2/css/bulma.min.css">
 	<title>Session Resurrection</title>
 </head>
-	<body>
+	<body class="content is-medium">
+		<br><br>
 		<h2>Session resurrection</h2>
 		<form name="checkListForm">
-			<input type="text" name="checkListItem" id="lists" />
+			<input type="text" name="checkListItem" id="lists" class="input" />
 		</form>
-		<br>
-		<div id="button">Save</div>
+		<br><br>
+		<div class="button is-link" id="button">Save</div>
 		<br/>
 		<div class="list"></div>
-		<div id="remove-sessions">Remove sessions</div>
+		<div class="button is-warning" id="remove-sessions">Clear all sessions</div>
 	</body>
-	<br><br><hr>
-	<div class="follow">
+	<br><br><br>
+	<div class="follow box">
 		<p>Follow me on GitHub <a href="https://github.com/TheAdnan">
 			<img src="https://img.shields.io/github/followers/espadrine.svg?style=social&label=Follow&style=flat-square">
 		</a></p>
