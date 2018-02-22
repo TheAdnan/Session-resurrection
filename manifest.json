@@ -4,11 +4,11 @@
     "version": "1.2",
     "description": "Save your browser sessions and reload them any time",
     "icons": {
-        "48": "icons/sess-res-48.png"
+        "48": "icons/logo.png"
     },
     "permissions": ["activeTab", "tabs", "storage", "<all_urls>", "webRequest"],
     "browser_action": {
-        "default_icon": "icons/sess-res-48.png",
+        "default_icon": "icons/logo.png",
         "default_title": "Session Resurrection",
         "default_popup": "/sessions-pop-up/index.html"
     },
