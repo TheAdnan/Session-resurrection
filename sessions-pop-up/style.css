@@ -1,8 +1,7 @@
- @import url('https://fonts.googleapis.com/css?family=Meera+Inimai');
+@import url('https://fonts.googleapis.com/css?family=Meera+Inimai');
 
 h2 {
     font-family: 'Meera Inimai', sans-serif;
-    font-size: 32px;
 }
 html{
     background-color: #f0eeeb!important;
@@ -22,35 +21,7 @@ body {
 form {
     display: inline-block;
 }
-/*
-#button{
-    display: inline-block;
-    height:20px;
-	width:70px;
-	background-color: #9C599C;
-	font-family: 'Meera Inimai', sans-serif;
-	font-weight: bold;
-	color:#ffffff;
-	border-radius: 5px;
-	margin-top:2px;
-	padding: 5px;
-     cursor: pointer;
-}
 
-#remove-sessions{
-    display: inline-block;
-    height:30px;
-    width:90px;
-    background-color: #00A3C1;
-    font-family: 'Meera Inimai', sans-serif;
-    font-weight: bold;
-    color:#ffffff;
-    border-radius: 5px;
-    margin-top:2px;
-    padding: 5px;
-    cursor: pointer;
-}
-*/
 #lists {
     padding: 5px;
 }

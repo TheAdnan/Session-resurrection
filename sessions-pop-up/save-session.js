@@ -59,6 +59,7 @@ $(document).ready(function() {
 
     $("#lists").keypress(function(e){
         if (e.which == 13) {
+                e.preventDefault();
                 var toAdd = $("input[name=checkListItem]").val();
                 if(toAdd.length < 2){
                     return;
