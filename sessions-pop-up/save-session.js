@@ -5,6 +5,7 @@ function saveSession(tabs) {
         sessionTabs.push(tab.url.toString());
     }
     saveToStorage(sessionTabs, $("input[name=checkListItem]").val());
+    $("input[name=checkListItem]").val("");
 }
 
 function onError(error) {
@@ -40,37 +41,34 @@ function getSessions(){
 	gettingItem.then(onGot, onError);
 }
 
-
-$(document).ready(function() {
-    getSessions();
-    $("#button").click(function() { 
-        var toAdd = $("input[name=checkListItem]").val();
+function addNewSession() {
+    var toAdd = $("input[name=checkListItem]").val();
         if(toAdd.length < 2){
             return;
         }
         else{
-            $('.list').append('<div class="item"><span class="icon-arrow-right-circle"></span> ' + toAdd + '</div>');
+            $('.list').append(`
+                <div class="item">
+                    <span class="icon-arrow-right-circle"></span> ${toAdd}
+                </div>
+            `);
             var querying = browser.tabs.query({
                 currentWindow: true
             });
             querying.then(saveSession, onError);
         }
+}
+
+$(document).ready(function() {
+    getSessions();
+    $("#button").click(function() { 
+        addNewSession();
     });
 
     $("#lists").keypress(function(e){
         if (e.which == 13) {
                 e.preventDefault();
-                var toAdd = $("input[name=checkListItem]").val();
-                if(toAdd.length < 2){
-                    return;
-                }
-                else{
-                    $('.list').append('<div class="item"><span class="icon-arrow-right-circle"></span> ' + toAdd + '</div>');
-                    var querying = browser.tabs.query({
-                        currentWindow: true
-                    });
-                    querying.then(saveSession, onError);
-                }
+                addNewSession();
           }
     });
 
@@ -78,6 +76,7 @@ $(document).ready(function() {
         emptyStorage();
         $('.list').empty();
     });
+
     $(document).on('click', '.item', function() {
         $(".item").click(function(){
         	restoreSession($(this).data());
