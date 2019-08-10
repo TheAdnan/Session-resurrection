@@ -6,6 +6,8 @@ function saveSession(tabs) {
     }
     saveToStorage(sessionTabs, $("input[name=checkListItem]").val());
     $("input[name=checkListItem]").val("");
+    $(".list").empty();
+    getSessions();
 }
 
 function onError(error) {
@@ -76,12 +78,12 @@ function addNewSession() {
     var toAdd = $("input[name=checkListItem]").val();
         if(toAdd.length < 2) return;
         else {
-            $('.list').append(`
-                <div class="item">
-                    <span class="icon-arrow-right-circle"></span> ${toAdd}
-                    <button class="button delete-session-btn"><span class="icon-trash"></span> Delete</button>
-                </div>
-            `);
+            // $('.list').append(`
+            //     <div class="item">
+            //         <span class="icon-arrow-right-circle"></span> ${toAdd}
+            //         <button class="button delete-session-btn"><span class="icon-trash"></span> Delete</button>
+            //     </div>
+            // `);
             var querying = browser.tabs.query({
                 currentWindow: true
             });
