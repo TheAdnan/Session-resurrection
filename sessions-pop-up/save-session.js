@@ -1,4 +1,8 @@
+var srConfig = {
+    captureWindows: false
+}
 var sessionTabs = [];
+
 function onError(error) {
     return;
 }
@@ -26,7 +30,9 @@ function saveSession(tabs) {
 }
 
 function saveToStorage(element, name) {
-    let setting = browser.storage.local.set({ [name]: element });
+    let setting = browser.storage.local.set({
+        [name]: element
+    });
     setting.then(null, onError);
 }
 
@@ -37,7 +43,10 @@ function emptyStorage() {
 
 function restoreSession(data) {
     Object.keys(data).forEach(function (key) {
-        browser.runtime.sendMessage({ "message": "restore_session", "urls": data[key] });
+        browser.runtime.sendMessage({
+            "message": "restore_session",
+            "urls": data[key]
+        });
     });
 }
 
@@ -92,10 +101,26 @@ function addNewSession() {
     var toAdd = $("input[name=checkListItem]").val();
     if (toAdd.length < 2) return;
     else {
-        var querying = browser.tabs.query({
-            currentWindow: true
-        });
-        querying.then(saveSession, onError);
+        if (srConfig.captureWindows == false) {
+            var urlsFromCurrentWindows = browser.tabs.query({
+                currentWindow: true
+            });
+            urlsFromCurrentWindows.then(saveSession, onError);
+        } else {
+            var urlsFromAllWindows = browser.windows.getAll({
+                populate: true,
+                windowTypes: ["normal"]
+            });
+            urlsFromAllWindows.then((windowInfoArray) => {
+                let tabList = [];
+                for (windowInfo of windowInfoArray) { // go through every window
+                    for (tab in windowInfo.tabs) { // go through every in a window tab
+                        tabList.push(windowInfo.tabs[tab]);
+                    }
+                }
+                saveSession(tabList);
+            }, onError);
+        }
     }
 }
 
@@ -106,6 +131,13 @@ $(document).ready(function () {
         if (e.which == 13) {
             e.preventDefault();
             addNewSession();
+        }
+    });
+    $("#window-config").click(function () {
+        if ($(this).prop("checked") == true) {
+            srConfig.captureWindows = true;
+        } else if ($(this).prop("checked") == false) {
+            srConfig.captureWindows = false;
         }
     });
     $("#remove-sessions").click(function () {
