@@ -69,9 +69,7 @@ function getSessions() {
                 Label > Restores the associated session (delegating to background.js)
                 Delete Button > Deletes the associated session
              */
-            console.log("TET <> ", $('#' + key_id + '_label').data());
             $('#' + key_id + '_label').click(() => {
-                console.log("Restore in progress");
                 restoreSession($('#' + key_id + '_label').data());
             });
             $('#' + key_id + '_btn').click(() => {
@@ -85,9 +83,7 @@ function getSessions() {
 function deleteSession(key) {
     let q = browser.storage.local.get();
     q.then((data) => {
-        console.log("FROM FUNC", data);
         if (data[key] != null) {
-            console.log("Killing >> " + key);
             let ro = browser.storage.local.remove(key);
             ro.then(() => {
                 let key_id = key.replace(/\s+/g, '-').toLowerCase();
