@@ -1,41 +1,30 @@
-@import url(https://fonts.googleapis.com/css?family=Meera+Inimai);
-
-.follow,
-.list,
-h2 {
-    font-family: 'Meera Inimai', sans-serif
-}
-
-html {
-    background-color: #f0eeeb !important
-}
-
-.follow {
-    font-size: 15px
-}
+@import url("https://fonts.googleapis.com/css?family=Nunito&display=swap");
 
 body {
-    text-align: center;
-    padding: 20px;
-    margin: 100px auto;
+    font-family: 'Nunito';
+    font-weight: 600;
 }
 
-form {
-    display: inline-block
+#_ao_main_wrapper {
+    width: 100%;
+    min-width: 500px;
 }
 
-#lists {
-    padding: 5px
+#_ao_title {
+    font-weight: 800;
+    margin-top: 1em;
 }
 
-.list {
-    color: #000;
-    font-weight: 700;
-    font-size: 20px;
-    margin: 10px;
-    padding: 10px
+#_ao_session_name,
+#_ao_session_save_btn,
+#_ao_session_delete_all_btn {
+    font-family: 'Nunito';
+    font-weight: 600;
 }
 
-.item {
-    cursor: pointer
+._cao_session_item {
+    display: flex; 
+        flex-direction: row; 
+        align-items: center; 
+        justify-content: space-between;
 }

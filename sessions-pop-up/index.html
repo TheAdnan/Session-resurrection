@@ -1,38 +1,73 @@
+<!-- 
+	Naming Convention:
+	Prefix | Semantics | Desc
+	=========================
+	_ao_   | _AddOn | for any unique element (Eg: main wrapper div)
+	_cao_  | _classAddOn | A class name
+
+	Changes from previous ids and classes:
+	IDs:
+		lists > _ao_session_name
+		button > _ao_session_save_btn
+		remove-sessions > _ao_session_delete_all_btn
+		window-config > _ao_session_window_config
+
+	class:
+		list > {ID} _ao_session_list
+		item > _cao_session_item
+ -->
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
-	<meta charset="UTF-8"> 
-	<link rel="stylesheet" href="style.css"/>
-	<script type="text/javascript" src="jquery-3.2.1.min.js"></script>
-	<script type="text/javascript" src="save-session.js"></script>
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/simple-line-icons/2.4.1/css/simple-line-icons.css">
-	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.6.2/css/bulma.min.css">
-	<title>Session Resurrection</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Session Resurrection</title>
+	<link rel="stylesheet" href="materialize/css/materialize.min.css">
+	<link rel="stylesheet" href="style.css">
+	<script src="jquery-3.2.1.min.js"></script>
+	<script src="materialize/js/materialize.min.js"></script>
+	<script src="save-session.js"></script>
 </head>
-	<body class="content is-medium">
-		<br/><br/>
-		<h2>Session Resurrection</h2>
-		<form name="checkListForm">
-			<input type="text" name="checkListItem" id="lists" class="input" autofocus/>
-			<label class="checkbox">
-				<input type="checkbox" name="window-config" id="window-config"/>
-				Save tabs from other windows
-			  </label>
-		</form>
-		<br/><br/>
-		<div class="button is-link" id="button">Save</div>
-		<br/>
-		<div class="list"></div>
-		<div class="button is-warning" id="remove-sessions">Remove all sessions</div>
-	</body>
-	<br><br><br>
-	<div class="follow box">
-		<p>Follow me on GitHub <a href="https://github.com/TheAdnan">
-			<img src="https://img.shields.io/github/followers/espadrine.svg?style=social&label=Follow&style=flat-square">
-		</a></p>
-		<p>Or at least give this project a star <a href="https://github.com/TheAdnan/Session-resurrection">
-			<img src="https://img.shields.io/github/stars/badges/shields.svg?style=social&label=Stars&style=flat-square">
-		</a></p>
-		<p>Whatever, I don't care, it's fine. <a href="https://theadnan.github.io/"><img src="https://img.shields.io/badge/I%20said-it's%20fine-9C599C.svg"></a></p>
-	</div>
+<body>
+    <div id="_ao_main_wrapper" class="container">
+        <div class="row center-align">
+            <h4 id="_ao_title">Session Resurrection</h4>
+        </div>
+        <div class="row center-align">
+            <div class="col s8 offset-s2">
+                <div class="input-field">
+                    <input placeholder="Session Name" name="_ao_session_name" id="_ao_session_name" type="text" autofocus>
+                </div>
+                <div class="input-field">
+                    <a class="waves-effect waves-dark btn purple" id="_ao_session_save_btn" type="button">Save</a>
+				</div>
+				<p>
+                    <label>
+                        <input type="checkbox" name="_ao_session_window_config" id="_ao_session_window_config"/><span>Tabs from all windows</span>
+                    </label>
+                </p>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col s10 offset-s1">
+                <div id="_ao_session_list_container">
+                    <ul class="collection" id="_ao_session_list"></ul>
+				</div>
+            </div>
+        </div>
+
+        <div class="row center-align">
+            <a class="waves-effect waves-dark btn z-depth-3 red" id="_ao_session_delete_all_btn" type="button">Delete All Sessions</a>
+        </div>
+    </div>
+
+    <div class="container">
+       <div class="row center-align">
+            <span></span>Contribute to the source code!
+       </div>
+    </div>
+</body>
+
 </html>
