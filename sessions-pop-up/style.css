@@ -6,8 +6,8 @@ body {
 }
 
 #_ao_main_wrapper {
-    width: 100%;
-    min-width: 500px;
+    /* width: 100%; */
+    min-width: 400px;
 }
 
 #_ao_title {
@@ -22,9 +22,18 @@ body {
     font-weight: 600;
 }
 
-._cao_session_item {
+._cao_session_item,
+._cao_footer_item {
     display: flex; 
-        flex-direction: row; 
-        align-items: center; 
-        justify-content: space-between;
+    flex-direction: row; 
+    align-items: center; 
+    justify-content: space-between;
+}
+
+._cao_footer_item {
+    justify-content: center;
+}
+
+._cao_session_item_label {
+    overflow: hidden;
 }

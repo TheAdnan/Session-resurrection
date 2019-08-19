@@ -59,7 +59,7 @@ function getSessions() {
             let key_id = key.replace(/\s+/g, '-').toLowerCase();
             $('#_ao_session_list').append(`
             <li id="${key_id}" class="collection-item _cao_session_item" style="">
-                <p>${key}</p>
+                <p class="_cao_session_item_label">${key}</p>
                 <div>
                     <a id="${key_id}_label" class="btn waves-effect waves-light green tooltipped" data-position="top" data-tooltip="Revive Session" alt="Revive Session">R</a>
                     <a id="${key_id}_btn" class="btn waves-effect waves-light red tooltipped" data-position="top" data-tooltip="Delete Session" alt="Delete Session">D</a>
