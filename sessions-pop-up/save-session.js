@@ -33,7 +33,9 @@ function saveToStorage(element, name) {
     let setting = browser.storage.local.set({
         [name]: element
     });
-    setting.then(null, onError);
+    setting.then(() => {
+        sessionTabs.length = 0;
+    }, onError);
 }
 
 function emptyStorage() {
