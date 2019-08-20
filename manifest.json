@@ -1,7 +1,7 @@
 {
     "manifest_version": 2,
     "name": "session-resurrection",
-    "version": "1.4",
+    "version": "1.5",
     "description": "Save your browser sessions and reload them any time",
     "icons": {
         "48": "icons/sess-res-48.png"
