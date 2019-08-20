@@ -23,9 +23,9 @@ function saveSession(tabs) {
     for (let tab of tabs) {
         sessionTabs.push(tab.url.toString());
     }
-    saveToStorage(sessionTabs, $("input[name=checkListItem]").val());
-    $("input[name=checkListItem]").val("");
-    $(".list").empty();
+    saveToStorage(sessionTabs, $("input[name=_ao_session_name]").val());
+    $("input[name=_ao_session_name]").val("");
+    $("#_ao_session_list").empty();
     getSessions();
 }
 
@@ -57,12 +57,16 @@ function getSessions() {
     gettingItem.then((store_data) => {
         for (const key of Object.keys(store_data)) {
             let key_id = key.replace(/\s+/g, '-').toLowerCase();
-            $('.list').append(`
-                <div class="item" id="${key_id}">
-                    <span class="icon-arrow-right-circle" id="${key_id}_label"></span> ${key} 
-                    <button class="button delete-session-btn" id="${key_id}_btn"><span class="icon-trash"></span> Delete</button>
+            $('#_ao_session_list').append(`
+            <li id="${key_id}" class="collection-item _cao_session_item" style="">
+                <p class="_cao_session_item_label">${key}</p>
+                <div>
+                    <a id="${key_id}_label" class="btn waves-effect waves-light green tooltipped" data-position="top" data-tooltip="Revive Session" alt="Revive Session"><i class="medium material-icons">open_in_new</i></a>
+                    <a id="${key_id}_btn" class="btn waves-effect waves-light red tooltipped" data-position="top" data-tooltip="Delete Session" alt="Delete Session"><i class="medium material-icons">delete_forever</i></a>
                 </div>
+            </li>
             `);
+
             $('#' + key_id).data(key, store_data[key]);
             $('#' + key_id + '_btn').data(key, store_data[key]);
             $('#' + key_id + '_label').data(key, store_data[key]);
@@ -96,7 +100,7 @@ function deleteSession(key) {
 }
 
 function addNewSession() {
-    var toAdd = $("input[name=checkListItem]").val();
+    var toAdd = $("input[name=_ao_session_name]").val();
     if (toAdd.length < 2) return;
     else {
         if (srConfig.captureWindows == false) {
@@ -124,22 +128,22 @@ function addNewSession() {
 
 $(document).ready(function () {
     getSessions();
-    $("#button").click(() => addNewSession());
-    $("#lists").keypress((e) => {
+    $("#_ao_session_save_btn").click(() => addNewSession());
+    $("#_ao_session_name").keypress((e) => {
         if (e.which == 13) {
             e.preventDefault();
             addNewSession();
         }
     });
-    $("#window-config").click(function () {
+    $("#_ao_session_window_config").click(function () {
         if ($(this).prop("checked") == true) {
             srConfig.captureWindows = true;
         } else if ($(this).prop("checked") == false) {
             srConfig.captureWindows = false;
         }
     });
-    $("#remove-sessions").click(function () {
+    $("#_ao_session_delete_all_btn").click(function () {
         emptyStorage();
-        $('.list').empty();
+        $('#_ao_session_list').empty();
     });
 });
