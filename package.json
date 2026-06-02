@@ -1,0 +1,26 @@
+{
+  "name": "session-resurrection",
+  "version": "1.6.0",
+  "description": "<p align=\"center\">     <a href=\"https://addons.mozilla.org/en-US/firefox/addon/session-resurrection\" target=\"_blank\">         <img src=\"https://img.shields.io/badge/Firefox-Addon-orange.svg\" alt=\"Download\">     </a>     <a href=\"#\">         <img src=\"https://img.shields.io/badge/Made-while%20rewatching%20Frisky%20Dingo-9C599C.svg\" alt=\"Made while rewatching Frisky Dingo\">     </a> </p>",
+  "main": "background.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "copy-deps": "cp node_modules/jquery/dist/jquery.min.js sessions-pop-up/jquery.min.js && cp node_modules/@materializecss/materialize/dist/css/materialize.min.css sessions-pop-up/materialize/css/materialize.min.css && cp node_modules/@materializecss/materialize/dist/js/materialize.min.js sessions-pop-up/materialize/js/materialize.min.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TheAdnan/Session-resurrection.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/TheAdnan/Session-resurrection/issues"
+  },
+  "homepage": "https://github.com/TheAdnan/Session-resurrection#readme",
+  "dependencies": {
+    "@materializecss/materialize": "^2.3.3",
+    "jquery": "^4.0.0"
+  }
+}
