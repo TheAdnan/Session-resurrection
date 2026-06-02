@@ -1,18 +1,24 @@
 {
-    "manifest_version": 2,
+    "manifest_version": 3,
     "name": "session-resurrection",
-    "version": "1.5",
+    "version": "1.6",
     "description": "Save your browser sessions and reload them any time",
     "icons": {
         "48": "icons/sess-res-48.png"
     },
-    "permissions": ["activeTab", "tabs", "storage", "<all_urls>", "webRequest"],
-    "browser_action": {
+    "permissions": [
+        "tabs",
+        "storage",
+        "activeTab"
+    ],
+    "action": {
         "default_icon": "icons/sess-res-48.png",
         "default_title": "Session Resurrection",
-        "default_popup": "/sessions-pop-up/index.html"
+        "default_popup": "sessions-pop-up/index.html"
     },
     "background": {
-        "scripts": ["/background.js"]
+        "scripts": [
+            "background.js"
+        ]
     }
 }
