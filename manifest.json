@@ -11,9 +11,6 @@
         "storage",
         "activeTab"
     ],
-    "host_permissions": [
-        "<all_urls>"
-    ],
     "action": {
         "default_icon": "icons/sess-res-48.png",
         "default_title": "Session Resurrection",
